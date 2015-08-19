@@ -5,9 +5,9 @@ import com.bitwise.dominos.ordermaking.OrderLine;
 import com.bitwise.dominos.pizza.Pizza;
 import com.bitwise.dominos.pizza.PizzaMaker;
 import com.bitwise.dominos.pizza.PizzaOrderTestValidator;
-import com.bitwise.dominos.pizzadb.CrustDB;
-import com.bitwise.dominos.pizzadb.PizzaDB;
-import com.bitwise.dominos.pizzadb.ToppingsDB;
+import com.bitwise.dominos.pizzastore.CrustDB;
+import com.bitwise.dominos.pizzastore.PizzaDB;
+import com.bitwise.dominos.pizzastore.ToppingsDB;
 import org.junit.Test;
 
 public class PizzaOrder_3_Test extends PizzaOrderTestValidator{

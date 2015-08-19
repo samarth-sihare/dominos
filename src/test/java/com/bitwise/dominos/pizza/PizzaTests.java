@@ -2,7 +2,7 @@ package com.bitwise.dominos.pizza;
 
 import com.bitwise.dominos.ordermaking.Order;
 import com.bitwise.dominos.ordermaking.OrderLine;
-import com.bitwise.dominos.pizzadb.PizzaDB;
+import com.bitwise.dominos.pizzastore.PizzaDB;
 import org.junit.Test;
 
 public class PizzaTests extends PizzaOrderTestValidator {
@@ -40,8 +40,8 @@ public class PizzaTests extends PizzaOrderTestValidator {
         order.addOrder(orderLine1);
         order.addOrder(orderLine2);
 
-        //then
-        validateOrderTotal(375, order);
+        //then 375
+        validateOrderTotal(377, order);
     }
 
 

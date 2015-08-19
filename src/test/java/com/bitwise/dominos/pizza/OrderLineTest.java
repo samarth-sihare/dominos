@@ -2,9 +2,9 @@ package com.bitwise.dominos.pizza;
 
 import com.bitwise.dominos.ordermaking.Order;
 import com.bitwise.dominos.ordermaking.OrderLine;
-import com.bitwise.dominos.pizzadb.CrustDB;
-import com.bitwise.dominos.pizzadb.PizzaDB;
-import com.bitwise.dominos.pizzadb.ToppingsDB;
+import com.bitwise.dominos.pizzastore.CrustDB;
+import com.bitwise.dominos.pizzastore.PizzaDB;
+import com.bitwise.dominos.pizzastore.ToppingsDB;
 import org.junit.Test;
 
 public class OrderLineTest extends PizzaOrderTestValidator {
