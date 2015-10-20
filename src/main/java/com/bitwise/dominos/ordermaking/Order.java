@@ -17,8 +17,9 @@ public class Order {
         this.orderLines.add(orderLine);
     }
 
+    
     private double calculateTotal() {
-        if(orderLines.size() == 0) throw new NoOrderAddedException();
+        if(orderLines.size() == 0) throw new NoOrderAddedException("No order added");
         return orderLines.stream().mapToDouble(e -> e.getPrice()).sum();
     }
 
@@ -31,5 +32,9 @@ public class Order {
     }
 
     public class NoOrderAddedException extends RuntimeException{
+    	NoOrderAddedException(String messages){
+    		super(messages);
+    		
+    	}
     }
 }
