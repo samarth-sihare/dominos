@@ -9,6 +9,7 @@ public class Topping {
         this.price = price;
     }
 
+    public String getToppingName() { return toppingName; }
     public double getPrice() {
         return this.price;
     }

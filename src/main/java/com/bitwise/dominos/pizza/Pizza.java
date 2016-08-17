@@ -41,11 +41,11 @@ public class Pizza {
         return this.pizzaName;
     }
 
-    Crust getCrust(){
+    public Crust getCrust(){
         return this.crust;
     }
 
-    HashMap<Topping,Boolean> getToppingsList(){
+    public HashMap<Topping,Boolean> getToppingsList(){
         return this.toppingsList;
     }
 

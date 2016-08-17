@@ -9,6 +9,8 @@ public class Crust {
         this.price = price;
     }
 
+    public String getName() { return name; }
+
     public double getPrice() {
         return this.price;
     }
