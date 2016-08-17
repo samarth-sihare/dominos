@@ -1,7 +1,8 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
-
+apply plugin: 'eclipse'
+apply plugin: 'jacoco'
 version = '1.0'
 
 sourceCompatibility = 1.8
@@ -10,7 +11,68 @@ project.ext{
     configPath = "$rootProject.projectDir/config/"
     dropwizardVersion = "0.9.2"
 }
+repositories {
+    mavenCentral()
+}
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.palantir:jacoco-coverage:0.4.0'
+    }
+}
+jacoco {
+    toolVersion = "0.7.6.201602180812"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
+}
+test {
+    jacoco {
+        append = false
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        classDumpFile = file("$buildDir/jacoco/classpathdumps")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'com.palantir.jacoco-coverage'
 
+jacocoCoverage {
+    // Minimum code coverage of 48% for all scopes in the file realm (i.e., for all files) and for all coverage types.
+    /*fileThreshold 0.44
+    packageThreshold 0.5, "com/bitwise/domminos"
+    // Minimum 'branch' coverage of 30% for all files.
+    fileThreshold 0.3, BRANCH
+
+    // Minimum 'line' coverage of 10% for files (in any directory) whose name matches the given regular expression.
+    fileThreshold 0.1, LINE, ~"(Indentation|Wrapping)\\.java"
+
+    // Minimum 'line' coverage of 10% for files named "Indentation.java" (case-sensitive, in any directory).
+    // (Note: This syntax uses exact string match against the file name while the regex syntax requires escaping.)
+    fileThreshold 0.1, LINE, "Indentation.java"
+
+    // Minimum coverage of 30% in the given class.
+    classThreshold 0.3, "org/company/module/MyClass"
+
+    // Minimum average coverage of 30% in given package.
+    packageThreshold 0.3, "org/company/module"
+
+    */// Minimum average coverage of 50% in report "my-project; the report name is usually the Gradle project name.
+    packageThreshold 0.9, "com/bitwise/dominos/ordermaking"
+    packageThreshold 0.6, "com/bitwise/dominos/pizza"
+    //reportThreshold 0.7, "dominos"
+
+    // Scopes can be exempt from all coverage requirements by exact scope name or scope name pattern.
+    /*fileThreshold 0.0, "MyClass.java"
+    packageThreshold 0.0, "org/company/module"
+    fileThreshold 0.0, ~".*Test.java"*/
+}
 repositories {
     mavenCentral()
 }
