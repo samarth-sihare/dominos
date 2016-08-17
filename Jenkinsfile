@@ -24,12 +24,18 @@ node {
 
 stage 'START_APPLICATION'
 parallel(services: {
-            sh 'chmod +x gradlew'
-             sh './gradlew run --no-daemon'
-   	},ui:{
-   	      sh 'chmod +x gradlew'
-            sh './gradlew runUI --no-daemon'
+            startApp("run --no-daemon")
+   	}, ui:{
+            startApp("runUI --no-daemon")
    	})
+
+def startApp(command) {
+    node {
+       sh 'chmod +x gradlew'
+       sh './gradlew ${command}'
+        }
+    }
+
 
 stage 'ARCHIVE_ARTIFACTS'
 node{
