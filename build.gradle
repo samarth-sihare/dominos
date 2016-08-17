@@ -87,3 +87,5 @@ mainClassName = "com.bitwise.dominos.DominosPizzaApplication"
 run {
     args 'server', configPath + 'app_config.yml'
 }
+
+task runUI(dependsOn: ':UI:jettyRunWar'){}

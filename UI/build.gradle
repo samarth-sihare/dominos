@@ -1,0 +1,19 @@
+version '0.0.1'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'jetty'
+
+httpPort = 8080
+stopPort = 8070
+stopKey  = 'stopui'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

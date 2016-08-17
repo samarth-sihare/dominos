@@ -1,2 +1,3 @@
 rootProject.name = 'dominos'
+include 'UI'
 
