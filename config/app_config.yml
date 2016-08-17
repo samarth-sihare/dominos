@@ -3,7 +3,7 @@ appName: Dominos Pizza Delivery
 server:
   applicationConnectors:
   - type: http
-    port: 9072
+    port: 9082
   adminConnectors:
   - type: http
-    port: 9082
+    port: 9092
