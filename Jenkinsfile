@@ -24,7 +24,8 @@ node {
 
 stage 'START_BASH_SCRIPT'
    	node{
-   	sudo sh './start.sh'
+   	   sh 'chmod +x start.sh'
+   	 sh './start.sh'
    	}
 
 
