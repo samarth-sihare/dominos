@@ -24,7 +24,7 @@ node {
 
 stage 'START_BASH_SCRIPT'
    	node{
-   	sh 'start.sh'
+   	sh './start.sh'
    	}
 
 
