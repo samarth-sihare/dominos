@@ -28,13 +28,13 @@ parallel(services: { startServices() }, ui:{ startUI() })
 def startServices() {
     node {
        sh 'chmod +x gradlew'
-       sh './gradlew run --no-daemon'
+       sh 'nohup ./gradlew run --no-daemon'
         }
     }
 def startUI() {
     node {
        sh 'chmod +x gradlew'
-       sh './gradlew runUI --no-daemon'
+       sh 'nohup ./gradlew runUI --no-daemon'
         }
     }    
 
