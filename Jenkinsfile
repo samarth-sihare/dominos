@@ -35,7 +35,8 @@ def startUI() {
     node {
        sh 'chmod +x gradlew'
        sh './gradlew runUI --no-daemon'
-      
+    }
+}
 
 
 stage 'ARCHIVE_ARTIFACTS'
