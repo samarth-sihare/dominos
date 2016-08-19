@@ -4,8 +4,8 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'jetty'
 
-httpPort = 9045
-stopPort = 9035
+httpPort = 9035
+stopPort = 9045
 stopKey  = 'stopui'
 
 sourceCompatibility = 1.8
