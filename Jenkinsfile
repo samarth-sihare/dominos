@@ -22,17 +22,22 @@ node {
   sh './gradlew jacoco --info'
    	}
 
-stage 'START_SERVICES'
-node {
-   sh 'chmod +x gradlew'
-  sh './gradlew run --no-daemon'
-   	}
+stage 'START_APPLICATION'
+parallel(services: { startServices() }, ui:{ startUI() })
 
-stage 'START_UI'
-node {
-   sh 'chmod +x gradlew'
-  sh './gradlew runUI --no-daemon'
-   	}
+def startServices() {
+    node {
+       sh 'chmod +x gradlew'
+       sh 'nohup ./gradlew run --no-daemon'
+        }
+    }
+def startUI() {
+    node {
+       sh 'chmod +x gradlew'
+       sh 'nohup ./gradlew runUI --no-daemon'
+        }
+    }    
+
 
 stage 'ARCHIVE_ARTIFACTS'
 node{
