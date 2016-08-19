@@ -27,7 +27,7 @@ stage 'START_BASH_SCRIPT'
    	   sh 'chmod +x start.sh'
    	   sh 'chmod 777 services.out'
    	   sh 'chmod 777 ui.out'
-   	 nohup sh './start.sh'
+   	  sh 'nohup sh ./start.sh'
    	}
 
 
