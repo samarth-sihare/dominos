@@ -1,2 +1,2 @@
-nohup ./gradlew run   >> services.out
-nohup ./gradlew runUI >> ui.out
+nohup ./gradlew run   >> ./services.out
+nohup ./gradlew runUI >> ./ui.out

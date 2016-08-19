@@ -25,6 +25,8 @@ node {
 stage 'START_BASH_SCRIPT'
    	node{
    	   sh 'chmod +x start.sh'
+   	   sh 'chmod 777 services.out'
+   	   sh 'chmod 777 ui.out'
    	 sh './start.sh'
    	}
 
