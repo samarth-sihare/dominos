@@ -33,7 +33,6 @@ def startServices() {
     }
 def startUI() {
     node {
-       sh 'chmod +x gradlew.sh'
        sh './gradlew runUI --no-daemon'
     }
 }
