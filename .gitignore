@@ -1,0 +1,10 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gradle/
+.idea/
+UI/build/
+UI/UI.iml
+build/
+dominos.ipr
+dominos.iws
+dominos.iml
+

@@ -8,6 +8,8 @@ httpPort = 9035
 stopPort = 9045
 stopKey  = 'stopui'
 
+jettyRun.daemon = true
+
 sourceCompatibility = 1.8
 
 repositories {
