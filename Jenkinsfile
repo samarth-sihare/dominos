@@ -23,20 +23,15 @@ node {
    	}
 
 stage 'START_APPLICATION'
-parallel(services: { startServices() }, ui:{ startUI() })
+    node {
+       sh 'chmod +x gradlew'
+       sh './gradlew startApplication'
+        }
+    node {
+       sh 'chmod +x gradlew'
+       sh './gradlew startUI'
+        }
 
-def startServices() {
-    node {
-       sh 'chmod +x gradlew'
-       sh './gradlew run --no-daemon'
-        }
-    }
-def startUI() {
-    node {
-       sh 'chmod +x gradlew'
-       sh './gradlew runUI --no-daemon'
-        }
-}
 
 
 stage 'ARCHIVE_ARTIFACTS'

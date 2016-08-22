@@ -88,4 +88,16 @@ run {
     args 'server', configPath + 'app_config.yml'
 }
 
+task startApplication << {
+    def processBuilder = new ProcessBuilder(['/bin/bash','/services.sh'])
+    processBuilder.directory(new File("$rootProject.projectDir"))
+    processBuilder.start()
+}
+task startUI << {
+    def processBuilder = new ProcessBuilder(['/bin/bash','/ui.sh'])
+    processBuilder.directory(new File("$rootProject.projectDir"))
+    processBuilder.start()
+}
+
+
 task runUI(dependsOn: ':UI:jettyRunWar'){}
