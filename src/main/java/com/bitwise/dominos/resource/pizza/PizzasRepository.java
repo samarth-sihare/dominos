@@ -6,6 +6,8 @@ import com.bitwise.dominos.api.ToppingsDS;
 import com.bitwise.dominos.pizza.Pizza;
 import com.bitwise.dominos.pizza.Topping;
 import com.bitwise.dominos.pizzadb.PizzaDB;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.dropwizard.jackson.Jackson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +18,7 @@ import java.util.List;
  */
 public class PizzasRepository  implements ItemsRepository {
 
-    //private static final ObjectMapper MAPPER = Jackson.newObjectMapper();
+    private static final ObjectMapper MAPPER = Jackson.newObjectMapper();
     private final List<PizzaDS> pizzaList;
 
     public PizzasRepository(){

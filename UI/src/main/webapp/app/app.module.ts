@@ -18,6 +18,7 @@ import { routing }              from './app.routing';
 import { DashboardComponent }   from './dashboard.component'
 import { CheckoutComponent }    from './checkout.component'
 import { CheckoutService }      from './checkout.service'
+import { OrderComponent}        from './order.component'
 
 @NgModule({
   imports:      [ 
@@ -31,12 +32,11 @@ import { CheckoutService }      from './checkout.service'
       PizzasComponent,
       PizzaDetailComponent ,
       DashboardComponent,
-      CheckoutComponent
+      CheckoutComponent,
+      OrderComponent
       ],
       providers: [
-          PizzaService,CheckoutService,
-          { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
-          { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data
+          PizzaService,CheckoutService
       ],
   bootstrap:    [ 
       AppComponent 

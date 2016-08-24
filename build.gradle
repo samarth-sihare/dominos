@@ -89,12 +89,12 @@ run {
 }
 
 task startApplication << {
-    def processBuilder = new ProcessBuilder(['/bin/bash','/services.sh'])
+    def processBuilder = new ProcessBuilder('./services.sh')
     processBuilder.directory(new File("$rootProject.projectDir"))
     processBuilder.start()
 }
 task startUI << {
-    def processBuilder = new ProcessBuilder(['/bin/bash','/ui.sh'])
+    def processBuilder = new ProcessBuilder('./ui.sh')
     processBuilder.directory(new File("$rootProject.projectDir"))
     processBuilder.start()
 }

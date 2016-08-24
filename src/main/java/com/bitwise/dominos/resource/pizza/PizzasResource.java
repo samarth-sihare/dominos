@@ -2,11 +2,13 @@ package com.bitwise.dominos.resource.pizza;
 
 import com.bitwise.dominos.api.ItemsRepository;
 import com.bitwise.dominos.api.PizzaDS;
+import com.bitwise.dominos.pizzadb.PizzaDB;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,6 +29,7 @@ public class PizzasResource {
     public List<PizzaDS> getPizzas(){
         return pRepository.getItems();
     }
+
 
     //private final PizzaSelector pizzaSelector;
 
