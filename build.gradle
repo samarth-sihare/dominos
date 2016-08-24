@@ -10,6 +10,8 @@ sourceCompatibility = 1.8
 project.ext{
     configPath = "$rootProject.projectDir/config/"
     dropwizardVersion = "0.9.2"
+	seleniumVersion = "2.53.1"
+    testNGVersion = "6.9.10"	
 }
 repositories {
     mavenCentral()
@@ -39,6 +41,10 @@ test {
         destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
         classDumpFile = file("$buildDir/jacoco/classpathdumps")
     }
+	
+    useTestNG{
+        suites 'src/main/resources/testng.xml'
+    }	
 }
 apply plugin: 'java'
 apply plugin: 'com.palantir.jacoco-coverage'
@@ -78,8 +84,11 @@ repositories {
 }
 
 dependencies {
-    compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+	compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
+    testCompile group: 'org.testng', name: 'testng', version: testNGVersion
     testCompile group: 'junit', name: 'junit', version: '4.12+'
+    testCompile group: 'com.relevantcodes', name: 'extentreports', version: '2.41.1'
 }
 
 mainClassName = "com.bitwise.dominos.DominosPizzaApplication"
