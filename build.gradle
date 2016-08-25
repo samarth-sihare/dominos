@@ -4,14 +4,14 @@ apply plugin: 'application'
 apply plugin: 'eclipse'
 apply plugin: 'jacoco'
 version = '1.0'
-
+def osFamily = "./gradlew"
 sourceCompatibility = 1.8
 
 project.ext{
     configPath = "$rootProject.projectDir/config/"
     dropwizardVersion = "0.9.2"
 	seleniumVersion = "2.53.1"
-    testNGVersion = "6.9.10"	
+    testNGVersion = "6.9.10"
 }
 repositories {
     mavenCentral()
@@ -93,19 +93,27 @@ dependencies {
 
 mainClassName = "com.bitwise.dominos.DominosPizzaApplication"
 
+
+
+
+// STARTS: REST Services AND Web GUI Application in background
 run {
     args 'server', configPath + 'app_config.yml'
 }
 
 task runUI(dependsOn: ':UI:jettyRunWar'){}
 
-task startApplication(type: ExecWait) {
+task startServices(type: ExecWait) {
     command './gradlew run'
+    ready 'org.eclipse.jetty.server.Server: Started'
 }
 
 task startWebUI(type: ExecWait) {
     command './gradlew runUI'
+    ready 'war'
 }
+
+task startApplication(dependsOn:['startServices','startWebUI'])
 
 
 class ExecWait extends DefaultTask {
@@ -125,11 +133,28 @@ class ExecWait extends DefaultTask {
         def line
         while ((line = reader.readLine()) != null) {
             println line + "***"
-            if(line.contains("war"))
+            if(line.contains(ready))
                 break;
         }
     }
 }
+
+import org.apache.tools.ant.taskdefs.condition.Os
+
+task checkWin() << {
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        osFamily = "gradlew.bat"
+        println("win "+osFamily)
+    } else {
+        println("UNIX")
+    }
+}
+
+
+// ENDS: REST Services AND Web GUI Application in background
+
+
+
 
 
 jar.doFirst{
