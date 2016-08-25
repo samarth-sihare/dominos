@@ -97,16 +97,62 @@ run {
     args 'server', configPath + 'app_config.yml'
 }
 
-task startApplication << {
-    def processBuilder = new ProcessBuilder('./services.sh')
-    processBuilder.directory(new File("$rootProject.projectDir"))
-    processBuilder.start()
-}
-task startUI << {
-    def processBuilder = new ProcessBuilder('./ui.sh')
-    processBuilder.directory(new File("$rootProject.projectDir"))
-    processBuilder.start()
-}
-
-
 task runUI(dependsOn: ':UI:jettyRunWar'){}
+
+task startApplication(type: ExecWait) {
+    command './gradlew run'
+}
+
+task startWebUI(type: ExecWait) {
+    command './gradlew runUI'
+}
+
+
+class ExecWait extends DefaultTask {
+    String command
+    String ready
+    @TaskAction
+    def createBackgroundProcess() {
+        ProcessBuilder builder = new ProcessBuilder(command.split(" "))
+        builder.redirectErrorStream(true)
+        Process process = builder.start()
+
+        InputStream stdout = process.getInputStream()
+        BufferedReader reader = new BufferedReader(new
+                InputStreamReader(stdout))
+
+
+        def line
+        while ((line = reader.readLine()) != null) {
+            println line + "***"
+            if(line.contains("war"))
+                break;
+        }
+    }
+}
+
+
+jar.doFirst{
+    manifest {
+        attributes("Manifest-Version"
+        : "1.0",
+                "Created-By"
+                : "bitwise",
+                "Specification-Title"
+                : "dominos",
+                "Specification-Version"
+                : version,
+                "Specification-Vendor"
+                : "bitwise",
+                "Implementation-Title"
+                : "dominos",
+                "Implementation-Version" : version,
+                "Implementation-Vendor"
+                : "bitwise",
+                "Main-Class"
+                : "com.bitwise.dominos.DominosPizzaApplication",
+                "Class-Path"
+                : "com/bitwise/qualidi/"
+        )
+    }
+}
