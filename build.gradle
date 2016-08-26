@@ -123,6 +123,11 @@ task startWebUI(type: ExecWait) {
 task startApplication(dependsOn:['startServices','startWebUI'])
 
 
+task clearApplicatioPorts(type: ExecWait2) {
+    command 'kill -9 $(cat etc/services | grep 9082| awk \'{print $7}\'| cut -d\'/\' -f1)'
+}
+
+
 class ExecWait extends DefaultTask {
     String command
     String ready
@@ -143,6 +148,18 @@ class ExecWait extends DefaultTask {
             if(line.contains(ready))
                 break;
         }
+    }
+}
+
+class ExecWait2 extends DefaultTask {
+    String command
+    @TaskAction
+    def createBackgroundProcess() {
+        ProcessBuilder builder = new ProcessBuilder(command.split(" "))
+        builder.redirectErrorStream(true)
+        Process process = builder.start()
+
+        return;
     }
 }
 
