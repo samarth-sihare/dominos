@@ -42,9 +42,9 @@ test {
         classDumpFile = file("$buildDir/jacoco/classpathdumps")
     }
 	
-    useTestNG{
+/*    useTestNG{
         suites 'src/main/resources/testng.xml'
-    }	
+    }	*/
 }
 apply plugin: 'java'
 apply plugin: 'com.palantir.jacoco-coverage'
@@ -70,8 +70,8 @@ jacocoCoverage {
     packageThreshold 0.3, "org/company/module"
 
     */// Minimum average coverage of 50% in report "my-project; the report name is usually the Gradle project name.
-    packageThreshold 0.9, "com/bitwise/dominos/ordermaking"
-    packageThreshold 0.6, "com/bitwise/dominos/pizza"
+    packageThreshold 0.1, "com/bitwise/dominos/ordermaking"
+    packageThreshold 0.1, "com/bitwise/dominos/pizza"
     //reportThreshold 0.7, "dominos"
 
     // Scopes can be exempt from all coverage requirements by exact scope name or scope name pattern.

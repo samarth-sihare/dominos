@@ -27,10 +27,6 @@ stage 'START_APPLICATION'
        sh 'chmod +x gradlew'
        sh './gradlew startApplication'
         }
-    node {
-       sh 'chmod +x gradlew'
-       sh './gradlew startUI'
-        }
 
 
 
