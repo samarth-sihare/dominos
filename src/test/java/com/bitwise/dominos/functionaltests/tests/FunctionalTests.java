@@ -34,7 +34,7 @@ public class FunctionalTests {
     @BeforeMethod(alwaysRun = true)
     public void setup(){
         driver = new FirefoxDriver();
-        driver.get("http://localhost:9035/UI");
+        driver.get("http://10.130.241.86:9035/UI");
         driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
         util = new Utilities();
