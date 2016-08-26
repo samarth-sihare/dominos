@@ -24,8 +24,8 @@ node {
 
 stage 'CLEAR_SEREVR_ADDRESSES'
 node{
-   sh 'chmod +x services.sh'
-    sh "./services.sh"
+       sh 'chmod +x gradlew'
+       sh './gradlew clearApplicatioPorts'
 }
 
 stage 'START_APPLICATION'
