@@ -22,6 +22,11 @@ node {
   sh './gradlew jacoco --info'
    	}
 
+stage 'CLEAR_SEREVR_ADDRESSES'
+node{
+    sh 'kill -9 $(netstat -anlp | grep 9082| awk '{print $7}'| cut -d'/' -f1)'
+}
+
 stage 'START_APPLICATION'
     node {
        sh 'chmod +x gradlew'
