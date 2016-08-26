@@ -24,7 +24,7 @@ node {
 
 stage 'CLEAR_SEREVR_ADDRESSES'
 node{
-    sh "kill -9 $(netstat -anlp | grep 9082| awk '{print \$7}'| cut -d'/' -f1)"
+    sh "kill -9 \$(netstat -anlp | grep 9082| awk '{print \$7}'| cut -d'/' -f1)"
 }
 
 stage 'START_APPLICATION'
