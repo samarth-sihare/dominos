@@ -46,6 +46,13 @@ test {
         suites 'src/main/resources/testng.xml'
     }	*/
 }
+
+task functionalTest(type: Test){
+        useTestNG{
+        suites 'src/main/resources/testng.xml'
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'com.palantir.jacoco-coverage'
 

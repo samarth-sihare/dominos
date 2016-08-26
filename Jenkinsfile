@@ -28,6 +28,12 @@ stage 'START_APPLICATION'
        sh './gradlew startApplication'
         }
 
+stage 'SART_FUNCTIONAL_TESTS'
+    node {
+       sh 'chmod +x gradlew'
+       sh './gradlew functionalTest'
+        }
+
 
 
 stage 'ARCHIVE_ARTIFACTS'
