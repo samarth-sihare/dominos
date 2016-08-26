@@ -16,17 +16,17 @@ node {
 
    }
 
+stage 'CLEAR_SEREVR_ADDRESSES'
+node{
+       sh 'chmod +x gradlew'
+       sh './gradlew clearApplicatioPorts'
+}   
+
 stage 'ASSESS_COVERAGE'
 node {
    	sh 'chmod +x gradlew'
   sh './gradlew jacoco --info'
    	}
-
-stage 'CLEAR_SEREVR_ADDRESSES'
-node{
-       sh 'chmod +x gradlew'
-       sh './gradlew clearApplicatioPorts'
-}
 
 stage 'START_APPLICATION'
     node {
